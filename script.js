@@ -10,14 +10,14 @@ const questions = [
   { question: "주4일제 하고 월급 적게 받기 vs 지금처럼 하기", options: ["시간", "돈"], score: [1, -1], category: "복지 돈" },
   
   // 안정 변화
-  { question: "처음 세운 계획대로 하기 vs 트렌드에 맞춘 잦은 변화", options: ["계획", "변화"], score: [1, -1], category: "안정선호 변화선호" },
-  { question: "낮지만 꾸준한 연봉인상률 vs 평가에 따라 매년 달라지는 연봉인상률", options: ["고정인상률", "변동인상률"], score: [1, -1], category: "안정선호 변화선호" },
-  { question: "주기적으로 정해진 날에만 보고하기 vs 이슈 있을 때마다 보고하기", options: ["정기보고", "수시보고"], score: [1, -1], category: "안정선호 변화선호" },
+  { question: "처음 세운 계획대로 하기 vs 트렌드에 맞춘 잦은 변화", options: ["계획", "변화"], score: [1, -1], category: "안정 변화" },
+  { question: "낮지만 꾸준한 연봉인상률 vs 평가에 따라 매년 달라지는 연봉인상률", options: ["고정인상률", "변동인상률"], score: [1, -1], category: "안정 변화" },
+  { question: "주기적으로 정해진 날에만 보고하기 vs 이슈 있을 때마다 보고하기", options: ["정기보고", "수시보고"], score: [1, -1], category: "안정 변화" },
   
-  // 수동적 능동적
-  { question: "지시받은 일만 하기 vs 내가 주도해서 하기", options: ["지시", "주도"], score: [1, -1], category: "업무스타일" },
-  { question: "하나하나 보고해서 컨펌받고 결과에 책임 안 지기 vs 착수보고만 하고 결과에 책임지기", options: ["컨펌", "책임"], score: [1, -1], category: "업무스타일" },
-  { question: "보람없지만 보상있는 일 vs 보람차지만 보상없는 일", options: ["보상", "보람"], score: [1, -1], category: "업무스타일" },
+  // 수동 능동
+  { question: "지시받은 일만 하기 vs 내가 주도해서 하기", options: ["지시", "주도"], score: [1, -1], category: "수동 능동" },
+  { question: "하나하나 보고해서 컨펌받고 결과에 책임 안 지기 vs 착수보고만 하고 결과에 책임지기", options: ["컨펌", "책임"], score: [1, -1], category: "수동 능동" },
+  { question: "보람없지만 보상있는 일 vs 보람차지만 보상없는 일", options: ["보상", "보람"], score: [1, -1], category: "수동 능동" },
   
   // 개인주의 공동체주의
   { question: "평가등급/등수 전사 공개 vs 비공개", options: ["공개", "비공개"], score: [1, -1], category: "개인주의 공동체주의" },
@@ -46,40 +46,18 @@ function loadQuestion() {
 let currentQuestionIndex = 0;
 const userChoices = [];
 
-function loadQuestion() {
-  if (currentQuestionIndex >= questions.length) {
-    showResults();
-    return;
-  }
-
-  const currentQuestion = questions[currentQuestionIndex];
-  questionElement.textContent = currentQuestion.question;
-  option1Button.querySelector("span").textContent = currentQuestion.options[0];
-  option2Button.querySelector("span").textContent = currentQuestion.options[1];
 
   // data-choice 속성 설정
   option1Button.setAttribute("data-choice", currentQuestion.options[0]);
   option2Button.setAttribute("data-choice", currentQuestion.options[1]);
 }
 
-function recordChoice(choice) {
-  userChoices.push(choice);
-  currentQuestionIndex++;
-  loadQuestion();
-}
-
-option1Button.addEventListener("click", () => {
-  recordChoice(option1Button.getAttribute("data-choice"));
-});
-option2Button.addEventListener("click", () => {
-  recordChoice(option2Button.getAttribute("data-choice"));
-});
 
 let categoryScores = {
   "외향 내향": 0,
   "복지 돈": 0,
   "안정 변화": 0,
-  "수동적 능동적": 0,
+  "수동 능동": 0,
   "개인주의 공동체주의": 0
 };
 
@@ -116,16 +94,16 @@ function showResults() {
   // 안정 변화 결과
   if (categoryScores["안정 변화"] > 0) {
     resultMessages += "<p>안정을 선호하는 성향입니다!</p>";
-  } else if (categoryScores["안정선호 변화선호"] < 0) {
+  } else if (categoryScores["안정 변화"] < 0) {
     resultMessages += "<p>변화와 트렌드를 선호하는 성향입니다.</p>";
   } else {
     resultMessages += "<p>안정과 변화를 균형 있게 선호하는 성향입니다.</p>";
   }
 
-    // 수동적 능동적 결과
-  if (categoryScores["수동적 능동적"] > 0) {
+    // 수동 능동 결과
+  if (categoryScores["수동 능동"] > 0) {
     resultMessages += "<p>수동적인 업무스타일을 선호하는 성향입니다!</p>";
-  } else if (categoryScores["수동적 능동적"] < 0) {
+  } else if (categoryScores["수동 능동"] < 0) {
     resultMessages += "<p>능동적인 업무스타일을 선호하는 성향입니다.</p>";
   } else {
     resultMessages += "<p>균형 있는 업무스타일을 선호하는 성향입니다.</p>";
@@ -142,24 +120,27 @@ function showResults() {
 
 
   // 결과 화면에 표시
-  const resultContainer = document.createElement("div");
-  resultContainer.innerHTML = `<h2>당신이 선호하는 업무성향은...</h2>${resultMessages}`;
+    resultContainer.innerHTML = `<h2>당신의 업무성향은...</h2>${resultMessages}`;
   document.body.appendChild(resultContainer);
-}
-
 
   const restartButton = document.createElement("button");
   restartButton.textContent = "다시 시작하기";
   restartButton.addEventListener("click", () => {
-    gameContainer.style.display = "block";
-    resultContainer.remove();
     currentQuestionIndex = 0;
-    userChoices.length = 0;
+    userChoices = [];
+    categoryScores = {
+      "외향 내향": 0,
+      "복지 돈": 0,
+      "안정 변화": 0,
+      "수동 능동": 0,
+      "개인주의 공동체주의": 0
+    };
+    resultContainer.remove();
     loadQuestion();
   });
 
   resultContainer.appendChild(restartButton);
-  document.body.appendChild(resultContainer);
 }
 
+// 게임 시작
 loadQuestion();
