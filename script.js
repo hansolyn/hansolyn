@@ -29,65 +29,42 @@ const questions = [
   { question: "점심 시간에도 건설적인 업무얘기 하는 동료 vs 업무시간에도 웃기지만 실없는 얘기 하는 동료", options: ["업무얘기", "실없는 얘기"], score: [1, -1], category: "기타 현안" },
 ];
 
-const questionElement = document.querySelector(".question");
-const option1Button = document.getElementById("option1");
-const option2Button = document.getElementById("option2");
-
-// 랜덤으로 질문 선택
-function loadQuestion() {
-  const randomIndex = Math.floor(Math.random() * questions.length);
-  const currentQuestion = questions[randomIndex];
-  
-  questionElement.textContent = currentQuestion.question;
-  option1Button.textContent = currentQuestion.options[0];
-  option2Button.textContent = currentQuestion.options[1];
-}
-
+// 게임 진행을 위한 변수
 let currentQuestionIndex = 0;
-const userChoices = [];
+let userChoices = []; // 사용자 선택 기록
 
+// 게임 시작 화면 구성
 function loadQuestion() {
-  if (currentQuestionIndex >= questions.length) {
-    showResults();
-    return;
-  }
+  const question = questions[currentQuestionIndex];
+  const gameContainer = document.getElementById("game-container");
 
-  const currentQuestion = questions[currentQuestionIndex];
-  questionElement.textContent = currentQuestion.question;
-  option1Button.querySelector("span").textContent = currentQuestion.options[0];
-  option2Button.querySelector("span").textContent = currentQuestion.options[1];
+  // 질문 내용 표시
+  const questionElement = document.createElement("div");
+  questionElement.classList.add("question");
+  questionElement.textContent = question.question;
+  gameContainer.innerHTML = ''; // 이전 질문 내용 초기화
+  gameContainer.appendChild(questionElement);
 
-  // data-choice 속성 설정
-  option1Button.setAttribute("data-choice", currentQuestion.options[0]);
-  option2Button.setAttribute("data-choice", currentQuestion.options[1]);
+  // 버튼 생성 및 선택지 표시
+  question.options.forEach((option, index) => {
+    const optionButton = document.createElement("button");
+    optionButton.textContent = option;
+    optionButton.addEventListener("click", () => {
+      recordChoice(index); // 선택 기록
+    });
+    gameContainer.appendChild(optionButton);
+  });
 }
 
-function recordChoice(choice) {
-  userChoices.push(choice);
-  currentQuestionIndex++;
-  loadQuestion();
-}
+// 사용자가 선택한 옵션을 기록
+function recordChoice(optionIndex) {
+  userChoices.push(optionIndex); // 선택된 옵션 기록
+  currentQuestionIndex++; // 다음 질문으로 이동
 
-option1Button.addEventListener("click", () => {
-  recordChoice(option1Button.getAttribute("data-choice"));
-});
-option2Button.addEventListener("click", () => {
-  recordChoice(option2Button.getAttribute("data-choice"));
-});
-
-let categoryScores = {
-  "외향 내향": 0,
-  "복지 돈": 0,
-  "안정 변화": 0,
-  "수동적 능동적": 0,
-  "개인주의 공동체주의": 0
-};
-
-// 각 카테고리별로 점수 계산
-function recordChoice(questionIndex, optionIndex) {
-  const question = questions[questionIndex];
-  if (question.category in categoryScores) {
-    categoryScores[question.category] += question.score[optionIndex];
+  if (currentQuestionIndex < questions.length) {
+    loadQuestion(); // 다음 질문 로드
+  } else {
+    showResults(); // 모든 질문을 끝내면 결과 표시
   }
 }
 
@@ -95,6 +72,12 @@ function recordChoice(questionIndex, optionIndex) {
 function showResults() {
   let resultMessages = "";
 
+  // 결과 화면에 표시
+  const resultContainer = document.createElement("div");
+  resultContainer.innerHTML = `<h2>당신이 선호하는 업무성향은...</h2>${resultMessages}`;
+  document.body.appendChild(resultContainer);
+}
+  
   // 외향 내향 결과
   if (categoryScores["외향 내향"] > 0) {
     resultMessages += "<p>당신은 외향적인 성향입니다!</p>";
@@ -139,13 +122,6 @@ function showResults() {
   } else {
     resultMessages += "<p>개인과 조직의 균형을 선호하는 성향입니다.</p>";
   }
-
-
-  // 결과 화면에 표시
-  const resultContainer = document.createElement("div");
-  resultContainer.innerHTML = `<h2>당신이 선호하는 업무성향은...</h2>${resultMessages}`;
-  document.body.appendChild(resultContainer);
-}
 
 
   const restartButton = document.createElement("button");
