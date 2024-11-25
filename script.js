@@ -60,6 +60,23 @@ function recordChoice(optionIndex) {
   loadQuestion();
 }
 
+// 게임재시작 함수
+function resetGame() {
+  currentQuestionIndex = 0;
+  userChoices = [];
+  categoryScores = {
+    "외향 내향": 0,
+    "복지 돈": 0,
+    "안정 변화": 0,
+    "수동 능동": 0,
+  };
+
+  const gameContainer = document.getElementById("game-container");
+  gameContainer.innerHTML = ""; // 화면 초기화
+  loadQuestion(); // 첫 번째 질문 로드
+}
+
+
 // 결과 출력 함수
 function showResults() {
   const gameContainer = document.getElementById("game-container");
@@ -111,20 +128,6 @@ function showResults() {
   restartButton.textContent = "다시 시작하기";
   restartButton.onclick = resetGame;
   gameContainer.appendChild(restartButton);
-}
-
-// 게임 재시작 함수
-function resetGame() {
-  currentQuestionIndex = 0;
-  userChoices = [];
-  categoryScores = {
-    "외향 내향": 0,
-    "복지 돈": 0,
-    "안정 변화": 0,
-    "수동 능동": 0,
-  };
-
-  loadQuestion();
 }
 
 // 게임 시작
