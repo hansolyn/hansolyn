@@ -7,7 +7,7 @@ const questions = [
   // 복지 돈
   { question: "식권(회사근처 편의점, 카페, 식당 사용가능) 연320만원 vs 연봉에 식대(비과세) 240만원", options: ["식권", "연봉"], score: [1, -1], category: "복지 돈" },
   { question: "다양한 복지가 있는 회사 vs 복지는 없지만 연봉이 높은 회사", options: ["복지", "연봉"], score: [1, -1], category: "복지 돈" },
-  { question: "주4일제 하고 월급 적게 받기 vs 지금처럼 하기", options: ["시간", "돈"], score: [1, -1], category: "복지 돈" },
+  { question: "근무시간 줄이고 월급 적게 받기 vs 근무시간 늘리고 월급 더 받기", options: ["시간", "월급"], score: [1, -1], category: "복지 돈" },
   
   // 안정 변화
   { question: "처음 세운 계획대로 하기 vs 트렌드에 맞춘 잦은 변화", options: ["계획", "변화"], score: [1, -1], category: "안정 변화" },
@@ -129,7 +129,7 @@ function showResults() {
   if (categoryScores["복지 돈"] > 0) {
     resultMessages += "<p>금전적 보상보다 유무형의 복지제도를 선호하는 성향입니다!</p>";
   } else if (categoryScores["복지 돈"] < 0) {
-    resultMessages += "<p>복지제도보다 금전적 보상을 선호하는 성향입니다.</p>";
+    resultMessages += "<p>복지보다 금전적 보상을 선호하는 성향입니다.</p>";
   } else {
     resultMessages += "<p>복지와 금전적 보상의 균형을 추구하는 성향입니다.</p>";
   }
