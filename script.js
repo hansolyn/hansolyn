@@ -38,13 +38,22 @@ const option2Button = document.getElementById("option2");
 function loadQuestion() {
   const gameContainer = document.getElementById("game-container");
   
-  if (currentQuestionIndex >= questions.length) {
+  if (usedQuestions.length >= questions.length) {
     showResults();
     return;
   }
 
-  const currentQuestion = questions[currentQuestionIndex];
- // 화면 구성
+  // 랜덤으로 질문 선택
+  let randomIndex;
+  do {
+    randomIndex = Math.floor(Math.random() * questions.length);
+  } while (usedQuestions.includes(randomIndex)); // 이미 사용한 질문은 제외
+
+  usedQuestions.push(randomIndex); // 사용한 질문 기록
+
+  const currentQuestion = questions[randomIndex];
+
+  // 화면 구성
   gameContainer.innerHTML = `
     <div class="question">${currentQuestion.question}</div>
     <div class="options">
@@ -54,18 +63,17 @@ function loadQuestion() {
   `;
 
   // 버튼 클릭 이벤트 연결
-  document.getElementById("option1").onclick = () => recordChoice(0);
-  document.getElementById("option2").onclick = () => recordChoice(1);
+  document.getElementById("option1").onclick = () => recordChoice(randomIndex, 0);
+  document.getElementById("option2").onclick = () => recordChoice(randomIndex, 1);
 }
 
 // 선택 기록 함수
-function recordChoice(optionIndex) {
-  const currentQuestion = questions[currentQuestionIndex];
+function recordChoice(questionIndex, optionIndex) {
+  const currentQuestion = questions[questionIndex];
   userChoices.push(optionIndex);
   categoryScores[currentQuestion.category] += currentQuestion.score[optionIndex];
 
-  currentQuestionIndex++;
-  loadQuestion();
+  loadQuestion(); // 다음 질문 로드
 }
 
 // 게임재시작 함수
@@ -78,6 +86,7 @@ function resetGame() {
     "안정 변화": 0,
     "수동 능동": 0,
   };
+  usedQuestions = []; // 사용한 질문 초기화
 
   const gameContainer = document.getElementById("game-container");
   gameContainer.innerHTML = ""; // 화면 초기화
