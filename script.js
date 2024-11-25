@@ -114,8 +114,17 @@ function showResults() {
   const gameContainer = document.getElementById("game-container");
   gameContainer.innerHTML = ""; // 이전 내용을 초기화
 
-  let resultMessages = "<h2>당신의 성향 분석 결과</h2>";
-
+  // 응답 결과 유형 계산
+  let responseType = "";
+  responseType += categoryScores["인간관계"] > 0 ? "E" : "I";
+  responseType += categoryScores["안정 변화"] > 0 ? "S" : "C";
+  responseType += categoryScores["복지 돈"] > 0 ? "W" : "M";
+  responseType += categoryScores["업무스타일"] > 0 ? "P" : "A";
+  responseType += categoryScores["개인과 조직"] > 0 ? "I" : "O";
+  
+  let resultMessages = `<h2>당신의 성향 분석 결과</h2>`;
+  resultMessages += `<p><strong>응답 유형: ${responseType}</strong></p>`;
+  
   // 인간관계
   if (categoryScores["인간관계"] > 0) {
     resultMessages += "<p>당신은 넓고 다양한 인간관계와 </p>";
