@@ -2,7 +2,7 @@ const questions = [
   // 인간관계
   { question: "1등상금 200만원 주는 재미있는 토요일 단합대회 vs 안 받고 안 하기", options: ["한다", "안 한다"], score: [1, -1], category: "인간관계" },
   { question: "다양한 부서 사람들과 교류하며 지내기 vs 업무 연관된 소수의 사람만 친하게 지내기", options: ["다수", "소수"], score: [1, -1], category: "인간관계" },
-  { question: "조용한 사무실 vs 시끌벅적한 사무실", options: ["조용", "시끌"], score: [1, -1], category: "인간관계" },
+  { question: "시끌벅적한 사무실 vs 조용한 사무실", options: ["조용", "시끌"], score: [1, -1], category: "인간관계" },
   
   // 복지 돈
   { question: "식권(회사근처 편의점, 카페, 식당 사용가능) 연320만원 vs 연봉에 식대(비과세) 240만원", options: ["식권", "연봉"], score: [1, -1], category: "복지 돈" },
