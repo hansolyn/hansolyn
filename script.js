@@ -129,7 +129,7 @@ function showResults() {
   if (categoryScores["안정 변화"] > 0) {
     resultMessages += "<p>안정을 추구하고,</p>";
   } else if (categoryScores["안정 변화"] < 0) {
-    resultMessages += "<p>변화를 추구하고,</p>";
+    resultMessages += "<p>빠른 변화를 추구하고,</p>";
   } else {
     resultMessages += "<p>안정과 변화의 균형을 추구하고,</p>";
   }
