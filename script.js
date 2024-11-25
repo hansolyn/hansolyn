@@ -25,7 +25,7 @@ const questions = [
   { question: "업무능력 떨어지지만 사회성 좋은 동료 vs 업무능력 뛰어나지만 사회성 없는 동료", options: ["사회성", "업무능력"], score: [1, -1], category: "개인과 조직" },
 
   // 기타현안
-  { question: "지금 자리에서 계속 일하기 vs 새로운 곳으로 이사가기", options: ["지금", "이사"], score: [1, -1], category: "기타현안" },
+  { question: "지금 자리에서 계속 일하기 vs 새로운 곳으로 이사가기", options: ["지금 자리", "새로운 곳"], score: [1, -1], category: "기타현안" },
   { question: "점심시간에도 건설적인 업무얘기 하는 동료 vs 업무시간에도 재밌지만 실없는 얘기 하는 동료", options: ["업무얘기", "실없는 얘기"], score: [1, -1], category: "기타현안" },
 ];
 
