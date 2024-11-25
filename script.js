@@ -21,8 +21,8 @@ const questions = [
 
   // 개인과 조직
   { question: "평가등급/등수 전사 공개 vs 비공개", options: ["공개", "비공개"], score: [1, -1], category: "개인과 조직" },
-  { question: "성과급 다같이 나눠받기 vs 기여도에 따라 다르게 받기", options: ["N분의 1", "기여도에 비례"], score: [1, -1], category: "개인과 조직" },
-  { question: "업무능력 떨어지지만 사회성 좋은 동료 vs 업무능력 뛰어나지만 사회성 없는 동료", options: ["사회성", "업무능력"], score: [1, -1], category: "개인과 조직" },
+  { question: "성과급 기여도에 따라 다르게 받기 vs 다같이 나눠받기", options: ["기여도에 따라", "N분의 1"], score: [1, -1], category: "개인과 조직" },
+  { question: "업무능력 뛰어나지만 사회성 없는 동료 vs 업무능력 떨어지지만 사회성 좋은 동료", options: ["업무능력", "사회성"], score: [1, -1], category: "개인과 조직" },
 
   // 기타현안
   { question: "지금 자리에서 계속 일하기 vs 새로운 곳으로 이사가기", options: ["지금 자리", "새로운 곳"], score: [1, -1], category: "기타현안" },
@@ -154,9 +154,9 @@ function showResults() {
 
   // 개인과 조직
   if (categoryScores["개인과 조직"] > 0) {
-    resultMessages += "<p>그리고 개인보다 조직 전체를 우선시하는 성향입니다!</p>";
+    resultMessages += "<p>그리고 조직 전체보다 개인의 성과를 우선시하는 성향입니다!</p>";
   } else if (categoryScores["개인과 조직"] < 0) {
-    resultMessages += "<p>그리고 조직 전체보다 개인의 성과를 우선시하는 성향입니다.</p>";
+    resultMessages += "<p>그리고 개인보다 조직 전체를 우선시하는 성향입니다!</p>";
   } else {
     resultMessages += "<p>그리고 개인과 조직 간의 균형을 추구하는 성향입니다.</p>";
   }
