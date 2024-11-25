@@ -36,18 +36,26 @@ const option2Button = document.getElementById("option2");
 
 // 질문 로드 함수
 function loadQuestion() {
+  const gameContainer = document.getElementById("game-container");
+  
   if (currentQuestionIndex >= questions.length) {
     showResults();
     return;
   }
 
   const currentQuestion = questions[currentQuestionIndex];
-  questionElement.textContent = currentQuestion.question;
-  option1Button.textContent = currentQuestion.options[0];
-  option2Button.textContent = currentQuestion.options[1];
+ // 화면 구성
+  gameContainer.innerHTML = `
+    <div class="question">${currentQuestion.question}</div>
+    <div class="options">
+      <button id="option1">${currentQuestion.options[0]}</button>
+      <button id="option2">${currentQuestion.options[1]}</button>
+    </div>
+  `;
 
-  option1Button.onclick = () => recordChoice(0);
-  option2Button.onclick = () => recordChoice(1);
+  // 버튼 클릭 이벤트 연결
+  document.getElementById("option1").onclick = () => recordChoice(0);
+  document.getElementById("option2").onclick = () => recordChoice(1);
 }
 
 // 선택 기록 함수
