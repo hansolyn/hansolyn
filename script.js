@@ -118,47 +118,47 @@ function showResults() {
 
   // 인간관계
   if (categoryScores["인간관계"] > 0) {
-    resultMessages += "<p>당신은 넓고 다양한 인간관계를 추구하는 성향입니다!</p>";
+    resultMessages += "<p>당신은 넓고 다양한 인간관계와 </p>";
   } else if (categoryScores["인간관계"] < 0) {
-    resultMessages += "<p>당신은 좁고 긴밀한 인간관계를 추구하는 성향입니다.</p>";
+    resultMessages += "<p>당신은 좁고 긴밀한 인간관계와 </p>";
   } else {
-    resultMessages += "<p>당신은 인간관계의 범위와 깊이에 있어 균형을 추구하는 성향입니다.</p>";
-  }
-
-  // 복지 돈
-  if (categoryScores["복지 돈"] > 0) {
-    resultMessages += "<p>금전적 보상보다 유무형의 복지제도를 선호하는 성향입니다!</p>";
-  } else if (categoryScores["복지 돈"] < 0) {
-    resultMessages += "<p>복지보다 금전적 보상을 선호하는 성향입니다.</p>";
-  } else {
-    resultMessages += "<p>복지와 금전적 보상의 균형을 추구하는 성향입니다.</p>";
+    resultMessages += "<p>당신은 인간관계의 범위와 깊이에 균형과 </p>";
   }
 
   // 안정 변화
   if (categoryScores["안정 변화"] > 0) {
-    resultMessages += "<p>안정을 추구하는 성향입니다!</p>";
+    resultMessages += "<p>안정을 추구하고,</p>";
   } else if (categoryScores["안정 변화"] < 0) {
-    resultMessages += "<p>변화를 추구하는 성향입니다.</p>";
+    resultMessages += "<p>변화를 추구하고,</p>";
   } else {
-    resultMessages += "<p>안정과 변화를 균형을 추구하는 성향입니다.</p>";
+    resultMessages += "<p>안정과 변화의 균형을 추구하고,</p>";
+  }
+
+  // 복지 돈
+  if (categoryScores["복지 돈"] > 0) {
+    resultMessages += "<p>금전적 보상보다 유무형의 복지제도를,</p>";
+  } else if (categoryScores["복지 돈"] < 0) {
+    resultMessages += "<p>복지보다 금전적 보상을,</p>";
+  } else {
+    resultMessages += "<p>복지와 금전적 보상의 균형을,</p>";
   }
 
   // 업무스타일
   if (categoryScores["업무스타일"] > 0) {
-    resultMessages += "<p>수동적인 업무스타일을 선호하는 성향입니다!</p>";
+    resultMessages += "<p>수동적인 업무스타일을 선호합니다!</p>";
   } else if (categoryScores["업무스타일"] < 0) {
-    resultMessages += "<p>능동적인 업무스타일을 선호하는 성향입니다.</p>";
+    resultMessages += "<p>능동적인 업무스타일을 선호합니다.</p>";
   } else {
-    resultMessages += "<p>균형 있는 업무스타일을 선호하는 성향입니다.</p>";
+    resultMessages += "<p>균형 있는 업무스타일을 선호합니다.</p>";
   }
 
   // 개인과 조직
   if (categoryScores["개인과 조직"] > 0) {
-    resultMessages += "<p>개인보다 조직 전체를 우선시하는 성향입니다!</p>";
+    resultMessages += "<p>그리고 개인보다 조직 전체를 우선시하는 성향입니다!</p>";
   } else if (categoryScores["개인과 조직"] < 0) {
-    resultMessages += "<p>조직 전체보다 개인의 성과를 우선시하는 성향입니다.</p>";
+    resultMessages += "<p>그리고 조직 전체보다 개인의 성과를 우선시하는 성향입니다.</p>";
   } else {
-    resultMessages += "<p>개인과 조직 간의 균형을 추구하는 성향입니다.</p>";
+    resultMessages += "<p>그리고 개인과 조직 간의 균형을 추구하는 성향입니다.</p>";
   }
 
   // 결과 메시지 출력
