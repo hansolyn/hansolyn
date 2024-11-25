@@ -145,7 +145,7 @@ function showResults() {
 
   // 업무스타일
   if (categoryScores["업무스타일"] > 0) {
-    resultMessages += "<p>수동적인 업무스타일을 선호합니다!</p>";
+    resultMessages += "<p>수동적인 업무스타일을 선호합니다.</p>";
   } else if (categoryScores["업무스타일"] < 0) {
     resultMessages += "<p>능동적인 업무스타일을 선호합니다.</p>";
   } else {
@@ -154,9 +154,9 @@ function showResults() {
 
   // 개인과 조직
   if (categoryScores["개인과 조직"] > 0) {
-    resultMessages += "<p>그리고 조직 전체보다 개인의 성과를 우선시하는 성향입니다!</p>";
+    resultMessages += "<p>그리고 조직보다 개인의 성과를 우선시하는군요!</p>";
   } else if (categoryScores["개인과 조직"] < 0) {
-    resultMessages += "<p>그리고 개인보다 조직 전체를 우선시하는 성향입니다!</p>";
+    resultMessages += "<p>그리고 개인보다 조직 전체의 성과를 우선시하는군요!</p>";
   } else {
     resultMessages += "<p>그리고 개인과 조직 간의 균형을 추구하는 성향입니다.</p>";
   }
