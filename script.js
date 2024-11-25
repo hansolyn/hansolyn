@@ -34,6 +34,8 @@ const questionElement = document.querySelector(".question");
 const option1Button = document.getElementById("option1");
 const option2Button = document.getElementById("option2");
 
+let usedQuestions = []; // 이미 사용한 질문의 인덱스 저장
+
 // 질문 로드 함수
 function loadQuestion() {
   const gameContainer = document.getElementById("game-container");
