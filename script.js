@@ -5,23 +5,23 @@ const questions = [
   { question: "시끌벅적한 사무실 vs 조용한 사무실", options: ["시끌", "조용"], score: [1, -1], category: "인간관계" },
   
   // 안정 변화
-  { question: "처음 세운 계획대로 하기 vs 실시간 상황에 맞춘 잦은 계획변경", options: ["계획", "변경"], score: [1, -1], category: "안정 변화" },
-  { question: "낮지만 꾸준한 연봉인상률 vs 평가에 따라 매년 달라지는 연봉인상률", options: ["고정인상률", "변동인상률"], score: [1, -1], category: "안정 변화" },
-  { question: "주기적으로 정해진 날에만 보고하기 vs 이슈 있을 때마다 보고하기", options: ["정기보고", "수시보고"], score: [1, -1], category: "안정 변화" },
+  { question: "프로젝트 진행 중반에 기가 막힌 아이디어가 떠올랐지만 처음 세운 계획대로 하기 vs 실시간으로 반영하여 계획변경", options: ["계획", "변경"], score: [1, -1], category: "안정 변화" },
+  { question: "매년 2%씩 연봉인상 vs 인사평가 결과에 따라 매년 0~10% 연봉인상", options: ["2%", "0~10%"], score: [1, -1], category: "안정 변화" },
+  { question: "매주 월요일 9시에 업무보고하기 vs 이슈 있을 때마다 보고하기", options: ["정기보고", "수시보고"], score: [1, -1], category: "안정 변화" },
   
   // 복지 돈
-  { question: "식권(회사근처 편의점, 카페, 식당 사용가능) 연320만원 vs 연봉에 식대(비과세) 240만원", options: ["식권", "연봉"], score: [1, -1], category: "복지 돈" },
-  { question: "다양한 복지가 있는 회사 vs 복지는 없지만 연봉이 높은 회사", options: ["복지", "연봉"], score: [1, -1], category: "복지 돈" },
+  { question: "연봉 미포함 식권(회사근처 편의점, 카페, 식당 사용가능) 연320만원 지급 vs 연봉에 식대(비과세) 240만원 추가", options: ["식권", "연봉"], score: [1, -1], category: "복지 돈" },
+  { question: "다양한 복지가 있는 회사 vs 복지는 하나도 없지만 연봉이 더 높은 회사", options: ["복지", "연봉"], score: [1, -1], category: "복지 돈" },
   { question: "근무시간 줄이고 월급 적게 받기 vs 근무시간 늘리고 월급 더 받기", options: ["시간", "월급"], score: [1, -1], category: "복지 돈" },
   
   // 업무스타일
   { question: "지시받은 일만 하기 vs 내가 주도해서 하기", options: ["지시", "주도"], score: [1, -1], category: "업무스타일" },
   { question: "하나하나 보고해서 컨펌받고 결과에 책임 안 지기 vs 착수보고만 하고 결과에 책임지기", options: ["컨펌", "책임"], score: [1, -1], category: "업무스타일" },
-  { question: "보람없지만 보상있는 일 vs 보람차지만 보상없는 일", options: ["보상", "보람"], score: [1, -1], category: "업무스타일" },
+  { question: "재미없고 지루하지만 보상이 주어지는 일 vs 재미있고 보람차지만 보상없는 일", options: ["보상", "보람"], score: [1, -1], category: "업무스타일" },
 
   // 개인과 조직
-  { question: "평가등급/등수 전사 공개 vs 비공개", options: ["공개", "비공개"], score: [1, -1], category: "개인과 조직" },
-  { question: "성과급 기여도에 따라 다르게 받기 vs 다같이 나눠받기", options: ["기여도에 따라", "N분의 1"], score: [1, -1], category: "개인과 조직" },
+  { question: "인사평가 등급/등수 전사 공개 vs 비공개", options: ["공개", "비공개"], score: [1, -1], category: "개인과 조직" },
+  { question: "프로젝트가 성공적으로 마무리되어 성과급을 준다는데, 기여도에 따라 다르게 받기 vs 똑같이 나눠받기", options: ["기여도에 따라", "N분의 1"], score: [1, -1], category: "개인과 조직" },
   { question: "업무능력 뛰어나지만 사회성 없는 동료 vs 업무능력 떨어지지만 사회성 좋은 동료", options: ["업무능력", "사회성"], score: [1, -1], category: "개인과 조직" },
 
   // 기타현안
