@@ -40,6 +40,17 @@ let categoryScores = {
   "기타현안": 0,
 };
 
+// 게임 시작 함수
+function startGame() {
+  const coverContainer = document.getElementById("cover-container");
+  const gameContainer = document.getElementById("game-container");
+
+  coverContainer.classList.add("hidden"); // 표지 숨기기
+  gameContainer.classList.remove("hidden"); // 게임 화면 보이기
+
+  loadQuestion(); // 첫 번째 질문 로드
+}
+
 // HTML 요소 가져오기
 const questionElement = document.querySelector(".question");
 const option1Button = document.getElementById("option1");
@@ -103,9 +114,10 @@ function resetGame() {
   };
   usedQuestions = []; // 사용한 질문 초기화
 
+  const coverContainer = document.getElementById("cover-container");
   const gameContainer = document.getElementById("game-container");
-  gameContainer.innerHTML = ""; // 화면 초기화
-  loadQuestion(); // 첫 번째 질문 로드
+  coverContainer.classList.remove("hidden"); // 표지 보이기
+  gameContainer.classList.add("hidden"); // 게임 화면 숨기기
 }
 
 
@@ -181,4 +193,4 @@ function showResults() {
 }
 
 // 게임 시작
-loadQuestion();
+document.getElementById("start-button").onclick = startGame;
