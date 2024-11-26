@@ -6,7 +6,7 @@ const questions = [
   
   // 안정 변화
   { question: "프로젝트 진행 중반에 기가 막힌 아이디어가 떠올랐지만 처음 세운 계획대로 하기 vs 실시간으로 반영하여 계획변경", options: ["계획", "변경"], score: [1, -1], category: "안정 변화" },
-  { question: "매년 2%씩 연봉인상 vs 인사평가 결과에 따라 매년 0~10% 연봉인상", options: ["2%", "0~10%"], score: [1, -1], category: "안정 변화" },
+  { question: "매년 3%씩 연봉인상 vs 인사평가 결과에 따라 매년 0~10% 연봉인상", options: ["3%", "0~10%"], score: [1, -1], category: "안정 변화" },
   { question: "매주 월요일 9시에 업무보고하기 vs 이슈 있을 때마다 보고하기", options: ["정기보고", "수시보고"], score: [1, -1], category: "안정 변화" },
   
   // 복지 돈
