@@ -10,6 +10,9 @@
       text-align: center;
       padding: 20px;
     }
+    .hidden {
+      display: none;
+    }
     .question {
       font-size: 1.5rem;
       margin-bottom: 20px;
@@ -23,13 +26,16 @@
   </style>
 </head>
 <body>
-  <div id="game-container">
+  <!-- 표지 화면 -->
+  <div id="cover-container">
+    <h1>직장인 밸런스 게임</h1>
+    <p>당신의 업무 성향을 분석해보세요!</p>
+    <button id="start-button">게임 시작</button>
+  </div>
+
+  <!-- 게임 화면 -->
+  <div id="game-container" class="hidden">
     <!-- 질문이 여기에 동적으로 추가됩니다 -->
-    <div class="question"></div>
-    <div class="options">
-      <button id="option1"><span>옵션 1</span></button>
-      <button id="option2"><span>옵션 2</span></button>
-    </div>
   </div>
   
   <script src="script.js"></script>
